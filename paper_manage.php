@@ -55,15 +55,23 @@
                   <li><a><i class="fa fa-home"></i> 論文 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="paper_manage.php">論文管理</a></li>
-                      <li><a href="favorite.php">我的最愛*</a></li>
-                      <li><a href="verify.php">論文審核*</a></li>
+                        <?php
+                        if ($_SESSION['authority'] == 1) {
+                            echo "<li><a href='favorite.php'>我的最愛*</a></li>";
+                            echo "<li><a href='verify.php'>論文審核*</a></li>";
+                        }
+                        ?>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> 使用者* <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="user_manage.php">使用者維護*</a></li>
-                    </ul>
-                  </li>
+                    <?php
+                    if ($_SESSION['authority'] == 1) {
+                        echo "<li><a><i class='fa fa-edit'></i> 使用者* <span class='fa fa-chevron-down'></span></a>";
+                        echo    "<ul class='nav child_menu''>";
+                        echo        "<li><a href='user_manage.php'>使用者維護*</a></li>";
+                        echo    "</ul>";
+                        echo "</li>";
+                    }
+                    ?>
                 </ul>
               </div>
             </div>
@@ -87,8 +95,11 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> 個人資料</a></li>
-                    <li><a href="php/logout.php"><i class="fa fa-sign-out pull-right"></i> 登出</a></li>
+                      <li><a href="javascript:;"> 登入身分 : <?php echo $_SESSION["authority"]==1?'管理員':'一般使用者' ?></a></li>
+                      <li><a href="javascript:;"> 學校 : <?php echo $_SESSION["school"] ?></a></li>
+                      <li><a href="javascript:;"> 科系 : <?php echo $_SESSION["department"] ?></a></li>
+                      <li><a href="javascript:;"> 信箱 : <?php echo $_SESSION["email"] ?></a></li>
+                      <li><a href="php/logout.php"><i class="fa fa-sign-out pull-right"></i> 登出</a></li>
                   </ul>
                 </li>
               </ul>

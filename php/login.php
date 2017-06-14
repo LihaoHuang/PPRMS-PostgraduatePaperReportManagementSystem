@@ -2,7 +2,6 @@
 $username=$_POST['username'];
 $password=$_POST['password'];
 
-
 $dbhost = '140.130.35.62';
 $dbport = '8082';
 $dbuser = '40343232';

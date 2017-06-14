@@ -14,26 +14,15 @@ function paper_load(user_id, search = false) {
 		let data = {
             "user_id": user_id
         };
-        let user = [];
-        $.post("php/user.php", data, function(msg){
-			var obj = JSON.parse(msg);
-			if (obj == "" || obj == null) {
-				console.log("查無資料!!");
-			} else {
-				user['user_id'] = 		obj[0]['user_id'];
-				user['username'] = 		obj[0]['username'];
-				user['name'] = 			obj[0]['name'];
-				user['school'] = 		obj[0]['school'];
-				user['department'] = 	obj[0]['department'];
-				user['email'] = 		obj[0]['email'];
-				user['authority'] = 	obj[0]['authority'];
-				user['valid'] = 		obj[0]['valid'];
-			}
-		});
 		$.post("php/paper.php", data, function(msg){
 			var obj = JSON.parse(msg);
 			if (obj == "" || obj == null) {
 				console.log("查無資料!!");
+                let str = "";
+                str += "<tr>";
+                str +=    "<td colspan='7' align='center'><h2>無資料</h2></td>";
+                str +="</tr>";
+                $("tbody").html(str);
 			} else {
 				let str = "";
 				for (var i = 0; i < obj.length; i++) {
@@ -42,12 +31,19 @@ function paper_load(user_id, search = false) {
 	                str +=    "<td>"+ obj[i]['source'] +"</td>";
 	                str +=    "<td>"+ obj[i]['publish'] +"</td>";
 	                str +=    "<td>第"+ obj[i]['vol'] +"捲第"+ obj[i]['no'] +"期</td>";
-	                str +=    "<td>"+ user['name'] +"</td>";
-	                str +=    "<td>"+ (obj[i]['pass']==1?'通過':'尚未通過') +"</td>";
+	                str +=    "<td>"+ obj[i]['name'] +"</td>";
+	                str +=    "<td>"+ (obj[i]['pass']==1?'通過':(obj[i]['pass']==2?'不通過':'尚未審核')) +"</td>";
 	                str +=    "<td>";
-	                str +=        "<button class='btn btn-primary' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i> 查看</button>";
-	                str +=        "<button class='btn btn-warning' data-toggle='modal' data-target='#edit' onclick='edit("+ obj[i]['paper_id'] +")'><i class='fa fa-pencil' aria-hidden='true'></i> 編輯</button>";
-	                str +=        "<button class='btn btn-danger' onclick='check_delete("+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i> 刪除</button>";
+	                str +=        "<button class='btn btn-success' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i> 查看</button>";
+	                str +=        "<button class='btn btn-primary' data-toggle='modal' data-target='#edit' onclick='edit("+ obj[i]['paper_id'] +")'><i class='fa fa-pencil' aria-hidden='true'></i> 編輯</button>";
+					str +=        "<button class='btn btn-danger' onclick='check_delete("+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i> 刪除</button>";
+					if (obj[i]['SESSION_auth'] == 1){
+                        if (obj[i]['favorite'] == 1){
+                            str +=        "<button class='btn btn-warning' onclick='check_favorite(1,"+ obj[i]['paper_id'] +")'><i class='fa fa-star' aria-hidden='true'></i> 加到我的最愛</button>";
+                        }else{
+                            str +=        "<button class='btn btn-warning' onclick='check_favorite(0,"+ obj[i]['paper_id'] +")'><i class='fa fa-star-o' aria-hidden='true'></i> 加到我的最愛</button>";
+                        }
+					}
 	                str +=    "</td>";
 	                str +="</tr>";
 				}
@@ -55,6 +51,114 @@ function paper_load(user_id, search = false) {
 			}
 		});
 	}
+}
+
+function favorite_load(user_id, search = false) {
+    if (search) {
+
+    } else {
+        let data = {
+            "user_id": user_id
+        };
+        $.post("php/favorite.php", data, function(msg){
+            var obj = JSON.parse(msg);
+            if (obj == "" || obj == null) {
+                console.log("查無資料!!");
+                let str = "";
+                str += "<tr>";
+                str +=    "<td colspan='7' align='center'><h2>無資料</h2></td>";
+                str +="</tr>";
+                $("tbody").html(str);
+            } else {
+                let str = "";
+                for (var i = 0; i < obj.length; i++) {
+                    str += "<tr>";
+                    str +=    "<td>"+ obj[i]['paper_name'] +"</td>";
+                    str +=    "<td>"+ obj[i]['source'] +"</td>";
+                    str +=    "<td>"+ obj[i]['publish'] +"</td>";
+                    str +=    "<td>第"+ obj[i]['vol'] +"捲第"+ obj[i]['no'] +"期</td>";
+                    str +=    "<td>"+ obj[i]['name'] +"</td>";
+                    str +=    "<td>"+ (obj[i]['pass']==1?'通過':(obj[i]['pass']==2?'不通過':'尚未審核')) +"</td>";
+                    str +=    "<td>";
+                    str +=        "<button class='btn btn-success' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i> 查看</button>";
+                    str +=        "<button class='btn btn-primary' data-toggle='modal' data-target='#edit' onclick='edit("+ obj[i]['paper_id'] +")'><i class='fa fa-pencil' aria-hidden='true'></i> 編輯</button>";
+                    str +=        "<button class='btn btn-danger' onclick='check_delete("+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i> 刪除</button>";
+					str +=        "<button class='btn btn-warning' onclick='check_nonfavorite("+ obj[i]['paper_id'] +")'><i class='fa fa-star' aria-hidden='true'></i> 取消我的最愛</button>";
+                    str +=    "</td>";
+                    str +="</tr>";
+                }
+                $("tbody").html(str);
+            }
+        });
+    }
+}
+
+function verify_load(user_id, search = false) {
+    if (search) {
+
+    } else {
+        let data = {
+            "user_id": user_id
+        };
+        $.post("php/verify.php", data, function(msg){
+            var obj = JSON.parse(msg);
+            if (obj == "" || obj == null) {
+                console.log("查無資料!!");
+                let str = "";
+                str += "<tr>";
+                str +=    "<td colspan='7' align='center'><h2>無資料</h2></td>";
+                str +="</tr>";
+                $("tbody").html(str);
+            } else {
+                let str = "";
+                for (var i = 0; i < obj.length; i++) {
+                    str += "<tr>";
+                    str +=    "<td>"+ obj[i]['paper_name'] +"</td>";
+                    str +=    "<td>"+ obj[i]['name'] +"</td>";
+                    str +=    "<td>"+ (obj[i]['pass']==1?'通過':(obj[i]['pass']==2?'不通過':'尚未審核')) +"</td>";
+                    str +=    "<td>";
+                    str +=        "<button class='btn btn-success' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i> 查看</button>";
+                    str +=        "<button class='btn btn-warning' onclick='check_verify(1, "+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i> 通過</button>";
+                    str +=        "<button class='btn btn-danger' onclick='check_verify(2, "+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i> 不通過</button>";
+                    str +=    "</td>";
+                    str +="</tr>";
+                }
+                $("tbody").html(str);
+            }
+        });
+    }
+}
+
+function favorite(state, paper_id) {
+	if (state==1){
+		alert("已經加到最愛!");
+	}else{
+        let data = {
+            "paper_id": paper_id
+        };
+        $.post("php/paper_favorite.php", data, function(msg){
+            window.location.reload();
+        });
+	}
+}
+
+function nonfavorite(paper_id){
+    let data = {
+        "paper_id": paper_id
+    };
+    $.post("php/paper_nonfavorite.php", data, function(msg){
+        window.location.reload();
+    });
+}
+
+function verify(state, paper_id) {
+	let data = {
+		"paper_id": paper_id,
+		"state": state,
+	};
+	$.post("php/paper_verify.php", data, function(msg){
+		window.location.reload();
+	});
 }
 
 function view(paper_id) {
@@ -89,8 +193,29 @@ function view(paper_id) {
 }
 
 function check_delete(paper_id) {
-	if(confirm("確實要刪除嗎?"))
+	if(confirm("確定要刪除嗎?"))
 		paper_delete(paper_id);
+}
+
+function check_favorite(state, paper_id) {
+    if(confirm("確定要加到我的最愛嗎?"))
+        favorite(state, paper_id);
+}
+
+function check_nonfavorite(paper_id) {
+    if(confirm("確定要取消我的最愛嗎?"))
+        nonfavorite(paper_id);
+}
+
+function check_verify(state, paper_id) {
+	if (state == 1){
+        if(confirm("確定要審核 通過?"))
+            verify(state, paper_id);
+	}else{
+        if(confirm("確定要審核 不通過?"))
+            verify(state, paper_id);
+	}
+
 }
 
 function paper_delete(paper_id) {

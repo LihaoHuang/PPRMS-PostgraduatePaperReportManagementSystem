@@ -11,7 +11,12 @@ $dbname = '40343232';
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $dbport) ;//連接資料庫
 mysqli_query($conn,"SET NAMES 'utf8'");//設定語系
-$sql = "SELECT * FROM `paper` WHERE `user_id` =  '{$user_id}'";
+session_start();
+if ($_SESSION["authority"] == 1){
+    $sql = "SELECT * FROM `paper` INNER JOIN `user` on `paper`.`user_id` = `user`.`user_id`";
+}else{
+    $sql = "SELECT * FROM `paper` INNER JOIN `user` on `paper`.`user_id` = `user`.`user_id` WHERE `user`.`user_id` = '{$user_id}'";
+}
 $result = mysqli_query($conn,$sql);
 
 $i=0;
@@ -34,6 +39,15 @@ while($row = mysqli_fetch_array($result)){
     $data[$i]['update_time']	= $row['update_time'];
     $data[$i]['teacher']		= $row['teacher'];
     $data[$i]['favorite']		= $row['favorite'];
+    //
+    $data[$i]['username']	= $row['username'];
+    $data[$i]['name']		= $row['name'];
+    $data[$i]['school']		= $row['school'];
+    $data[$i]['department']	= $row['department'];
+    $data[$i]['email']		= $row['email'];
+    $data[$i]['authority']	= $row['authority'];
+    $data[$i]['valid']		= $row['valid'];
+    $data[$i]['SESSION_auth']		= $_SESSION["authority"];
     $i = $i + 1;
 }
 
