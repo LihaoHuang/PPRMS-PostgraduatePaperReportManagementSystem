@@ -38,7 +38,7 @@
     ?>
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md" onload="user_load(<?php echo $_SESSION["user_id"] ?>)">
     <div class="container body">
       <div class="main_container">
         <!-- side navigation -->
@@ -122,25 +122,16 @@
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <p>
-                    <table id="" class="display" cellspacing="0" width="100%">
+                    <table class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
+                                <th>使用者名稱</th>
                                 <th>學校</th>
                                 <th>科系</th>
-                                <th>使用者名稱</th>
                                 <th>申請審核</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Ashton Cox</td>
-                                <td>Junior Technical Author</td>
-                                <td>San Francisco</td>
-                                <td>
-                                     <button class="btn btn-warning"><i class="fa fa-check" aria-hidden="true"></i> 確認</button>
-                                </td>
-                            </tr>
-
+                        <tbody id="table1">
                         </tbody>
                     </table>
                 </p>
@@ -152,7 +143,7 @@
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <p>
-                    <table id="table2" class="display" cellspacing="0" width="100%">
+                    <table class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>使用者名稱</th>
@@ -164,41 +155,9 @@
                                 <th>功能</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="table2">
                             <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Accountant</td>
-                                <td>Edinburgh</td>
-                                <td>Tokyo</td>
-                                <td>管理者</td>
-                                <td>
-                                     <button class="btn btn-warning"><i class="fa fa-check" aria-hidden="true"></i> 設為管理者</button>
-                                </td>
                             </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Accountant</td>
-                                <td>Edinburgh</td>
-                                <td>Tokyo</td>
-                                <td>一般使用者</td>
-                                <td>
-                                     <button class="btn btn-warning"><i class="fa fa-check" aria-hidden="true"></i> 設為管理者</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Accountant</td>
-                                <td>Edinburgh</td>
-                                <td>Tokyo</td>
-                                <td>一般使用者</td>
-                                <td>
-                                     <button class="btn btn-warning"><i class="fa fa-check" aria-hidden="true"></i> 設為管理者</button>
-                                </td>
-                            </tr>
-
                         </tbody>
                     </table>
                 </p>
@@ -226,17 +185,9 @@
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="js/custom.min.js"></script>
+    <!-- Selfdefined Scripts -->
+    <script src="js/user.js"></script>
     <!-- Datatables Scripts -->
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#table1').DataTable( {
-                "searching": false,
-            } );
-            $('#table2').DataTable( {
-                "searching": false,
-            } );
-        } );
-    </script>
   </body>
 </html>

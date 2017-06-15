@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4428fa3a-af31-49ac-8be5-be1ba6747854" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/paper_favorite.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/php/user.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/favorite.php" afterPath="$PROJECT_DIR$/favorite.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/paper.js" afterPath="$PROJECT_DIR$/js/paper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/paper_manage.php" afterPath="$PROJECT_DIR$/paper_manage.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/paper_manage_create.php" afterPath="$PROJECT_DIR$/paper_manage_create.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/paper_manage_view.php" afterPath="$PROJECT_DIR$/paper_manage_view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/login.php" afterPath="$PROJECT_DIR$/php/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/paper.php" afterPath="$PROJECT_DIR$/php/paper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/paper_view.php" afterPath="$PROJECT_DIR$/php/paper_view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template.php" afterPath="$PROJECT_DIR$/template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user_manage.php" afterPath="$PROJECT_DIR$/user_manage.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/verify.php" afterPath="$PROJECT_DIR$/verify.php" />
-    </list>
+    <list default="true" id="4428fa3a-af31-49ac-8be5-be1ba6747854" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,10 +18,11 @@
       <file leaf-file-name="paper.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/paper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="44" column="25" lean-forward="true" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
+            <state relative-caret-position="188">
+              <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
+                <element signature="n#!!block;n#paper_load#0" expanded="false" />
                 <element signature="n#!!block;n#favorite_load#0" expanded="false" />
                 <element signature="n#!!block;n#verify_load#0" expanded="false" />
                 <element signature="n#!!block;n#favorite#0" expanded="false" />
@@ -118,8 +104,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="51" />
-    <option name="y" value="94" />
+    <option name="x" value="57" />
+    <option name="y" value="50" />
     <option name="width" value="1851" />
     <option name="height" value="940" />
   </component>
@@ -253,16 +239,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1497447304368</updated>
-      <workItem from="1497447305834" duration="9998000" />
+      <workItem from="1497447305834" duration="10531000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9998000" />
+    <option name="totallyTimeSpent" value="10531000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="51" y="94" width="1851" height="940" extended-state="0" />
-    <editor active="true" />
+    <frame x="57" y="50" width="1851" height="940" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24141689" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -545,10 +531,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/paper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="44" column="25" lean-forward="true" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
+        <state relative-caret-position="188">
+          <caret line="9" column="45" lean-forward="false" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!block;n#paper_load#0" expanded="false" />
             <element signature="n#!!block;n#favorite_load#0" expanded="false" />
             <element signature="n#!!block;n#verify_load#0" expanded="false" />
             <element signature="n#!!block;n#favorite#0" expanded="false" />

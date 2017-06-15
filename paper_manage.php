@@ -188,7 +188,7 @@
 </html>
 
 <!-- View Modal -->
-<div class="modal fade bs-example-modal-lg"" id="view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade bs-example-modal-lg" id="view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div align="center" class="modal-content">
       <div class="modal-header">
@@ -263,7 +263,7 @@
 </div>
 
 <!-- Edit Modal -->
-<div class="modal fade bs-example-modal-lg"" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade bs-example-modal-lg" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div align="center" class="modal-content">
       <div class="modal-header">
