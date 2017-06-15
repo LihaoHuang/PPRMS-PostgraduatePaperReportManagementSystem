@@ -26,6 +26,11 @@
         print '<script>window.location.replace("login.php");</script>';
       }
 
+      if ($_SESSION['authority'] != 1) {
+          print '<script>javascript:history.back();</script>';
+          $_SESSION['message'] = "你沒有權限訪問該頁面!";
+      }
+
       if (isset($_SESSION['message'])) {
         echo '<script>alert(\''.$_SESSION['message'].'\');</script>';
         unset($_SESSION['message']);
@@ -135,7 +140,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12 bg-white">
                 <div class="col-md-11 col-sm-11 col-xs-11"></div>
                 <div class="col-md-1 col-sm-1 col-xs-1" style="margin-top:10px;">
-                    <a class="btn btn-success" href="paper_manage_create.php"><i class="fa fa-plus" aria-hidden="true"></i> 新增</a>
+                    <a class="btn btn-success" href="paper_manage_create.php" title="新增" data-tooltip="tooltip"><i class="fa fa-plus" aria-hidden="true"></i></a>
                 </div>
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <p>
@@ -335,4 +340,29 @@
       </form>
     </div>
   </div>
+</div>
+
+<!-- FileUpload Modal -->
+<div class="modal fade bs-example-modal-lg" id="fileupload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div align="center" class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">檔案上傳</h4>
+            </div>
+            <form class="form-horizontal" method="post" action="php/paper_fileupload.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="hidden" name="FileUpload_paper_id" id="FileUpload_paper_id">
+                        <label class="col-sm-2 control-label" for="file">論文原始檔</label>
+                        <div class="col-sm-10"><input type="file" name="file" id="file" required></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">送出表單</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

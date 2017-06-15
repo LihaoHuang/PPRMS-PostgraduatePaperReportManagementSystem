@@ -6,7 +6,7 @@
 */
 
 'use strict';
-
+$('[data-tooltip="tooltip"]').tooltip();
 function paper_load(user_id, search = false) {
 	if (search) {
 
@@ -34,20 +34,22 @@ function paper_load(user_id, search = false) {
 	                str +=    "<td>"+ obj[i]['name'] +"</td>";
 	                str +=    "<td>"+ (obj[i]['pass']==1?'通過':(obj[i]['pass']==2?'不通過':'尚未審核')) +"</td>";
 	                str +=    "<td>";
-	                str +=        "<button class='btn btn-success' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i> 查看</button>";
-	                str +=        "<button class='btn btn-primary' data-toggle='modal' data-target='#edit' onclick='edit("+ obj[i]['paper_id'] +")'><i class='fa fa-pencil' aria-hidden='true'></i> 編輯</button>";
-					str +=        "<button class='btn btn-danger' onclick='check_delete("+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i> 刪除</button>";
+	                str +=        "<button class='btn btn-success' data-tooltip='tooltip' title='查看' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i></button>";
+	                str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='編輯' data-toggle='modal' data-target='#edit' onclick='edit("+ obj[i]['paper_id'] +")'><i class='fa fa-pencil' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='檔案上傳' data-toggle='modal' data-target='#fileupload' onclick='fileupload("+ obj[i]['paper_id'] +")'><i class='fa fa-file' aria-hidden='true'></i></button>";
+					str +=        "<button class='btn btn-danger' data-tooltip='tooltip' title='刪除' onclick='check_delete("+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i> </button>";
 					if (obj[i]['SESSION_auth'] == 1){
                         if (obj[i]['favorite'] == 1){
-                            str +=        "<button class='btn btn-warning' onclick='check_favorite(1,"+ obj[i]['paper_id'] +")'><i class='fa fa-star' aria-hidden='true'></i> 加到我的最愛</button>";
+                            str +=        "<button class='btn btn-warning' data-tooltip='tooltip' title='加到我的最愛' onclick='check_favorite(1,"+ obj[i]['paper_id'] +")'><i class='fa fa-star' aria-hidden='true'></i></button>";
                         }else{
-                            str +=        "<button class='btn btn-warning' onclick='check_favorite(0,"+ obj[i]['paper_id'] +")'><i class='fa fa-star-o' aria-hidden='true'></i> 加到我的最愛</button>";
+                            str +=        "<button class='btn btn-warning' data-tooltip='tooltip' title='加到我的最愛' onclick='check_favorite(0,"+ obj[i]['paper_id'] +")'><i class='fa fa-star-o' aria-hidden='true'></i></button>";
                         }
 					}
 	                str +=    "</td>";
 	                str +="</tr>";
 				}
 				$("tbody").html(str);
+                $('[data-tooltip="tooltip"]').tooltip();
 			}
 		});
 	}
@@ -80,14 +82,15 @@ function favorite_load(user_id, search = false) {
                     str +=    "<td>"+ obj[i]['name'] +"</td>";
                     str +=    "<td>"+ (obj[i]['pass']==1?'通過':(obj[i]['pass']==2?'不通過':'尚未審核')) +"</td>";
                     str +=    "<td>";
-                    str +=        "<button class='btn btn-success' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i> 查看</button>";
-                    str +=        "<button class='btn btn-primary' data-toggle='modal' data-target='#edit' onclick='edit("+ obj[i]['paper_id'] +")'><i class='fa fa-pencil' aria-hidden='true'></i> 編輯</button>";
-                    str +=        "<button class='btn btn-danger' onclick='check_delete("+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i> 刪除</button>";
-					str +=        "<button class='btn btn-warning' onclick='check_nonfavorite("+ obj[i]['paper_id'] +")'><i class='fa fa-star' aria-hidden='true'></i> 取消我的最愛</button>";
+                    str +=        "<button class='btn btn-success' data-tooltip='tooltip' title='查看' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='編輯' data-toggle='modal' data-target='#edit' onclick='edit("+ obj[i]['paper_id'] +")'><i class='fa fa-pencil' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-danger' data-tooltip='tooltip' title='刪除' onclick='check_delete("+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i></button>";
+					str +=        "<button class='btn btn-warning' data-tooltip='tooltip' title='取消我的最愛' onclick='check_nonfavorite("+ obj[i]['paper_id'] +")'><i class='fa fa-star' aria-hidden='true'></i></button>";
                     str +=    "</td>";
                     str +="</tr>";
                 }
                 $("tbody").html(str);
+                $('[data-tooltip="tooltip"]').tooltip();
             }
         });
     }
@@ -117,13 +120,14 @@ function verify_load(user_id, search = false) {
                     str +=    "<td>"+ obj[i]['name'] +"</td>";
                     str +=    "<td>"+ (obj[i]['pass']==1?'通過':(obj[i]['pass']==2?'不通過':'尚未審核')) +"</td>";
                     str +=    "<td>";
-                    str +=        "<button class='btn btn-success' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i> 查看</button>";
-                    str +=        "<button class='btn btn-warning' onclick='check_verify(1, "+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i> 通過</button>";
-                    str +=        "<button class='btn btn-danger' onclick='check_verify(2, "+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i> 不通過</button>";
+                    str +=        "<button class='btn btn-success' data-tooltip='tooltip' title='查看' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-warning' data-tooltip='tooltip' title='通過' onclick='check_verify(1, "+ obj[i]['paper_id'] +")'><i class='fa fa-check' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-danger' data-tooltip='tooltip' title='不通過' onclick='check_verify(2, "+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i></button>";
                     str +=    "</td>";
                     str +="</tr>";
                 }
                 $("tbody").html(str);
+                $('[data-tooltip="tooltip"]').tooltip();
             }
         });
     }
@@ -185,7 +189,7 @@ function view(paper_id) {
 			$('#model_keyword3').html(obj[0]['keyword3']);
 			$('#model_keyword4').html(obj[0]['keyword4']);
 			$('#model_keyword5').html(obj[0]['keyword5']);
-			$('#model_filename').html(obj[0]['filename']);
+			$('#model_filename').html("<a type='button' class='btn btn-info' href='php/filedownload.php?paper_id="+obj[0]['paper_id']+"'>檔案下載</a>");
 			$('#model_teacher').html(obj[0]['teacher']);
 			$('#model_report_time').html(obj[0]['report_time']);
 		}
@@ -257,4 +261,20 @@ function edit(paper_id) {
 			$('#report_time').html("<input type='date' class='form-control' name='report_time' value='"+obj[0]['report_time']+"' required>");
 		}
 	});
+}
+
+function fileupload(paper_id) {
+    let data = {
+        "paper_id": paper_id
+    };
+
+    $.post("php/paper_view.php", data, function(msg){
+        var obj = JSON.parse(msg);
+        if (obj == "" || obj == null) {
+            console.log("查無資料!!");
+        } else {
+            console.log(obj);
+            $('#FileUpload_paper_id').val(obj[0]['paper_id']);
+        }
+    });
 }

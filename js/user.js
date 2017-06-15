@@ -6,7 +6,7 @@
 */
 
 'use strict';
-
+$('[data-tooltip="tooltip"]').tooltip();
 function user_load(user_id, search = false) {
 	if (search) {
 
@@ -46,7 +46,7 @@ function user_load(user_id, search = false) {
 		                str1 +=    "<td>"+ obj[i]['school'] +"</td>";
 		                str1 +=    "<td>"+ obj[i]['department'] +"</td>";
 		                str1 +=    "<td>";
-		                str1 +=        "<button class='btn btn-success' data-toggle='modal' onclick='check_verify("+ obj[i]['user_id'] +")'><i class='fa fa-check' aria-hidden='true'></i> 通過</button>";
+		                str1 +=        "<button class='btn btn-success' data-tooltip='tooltip' title='通過' data-toggle='modal' onclick='check_verify("+ obj[i]['user_id'] +")'><i class='fa fa-check' aria-hidden='true'></i></button>";
 		                str1 +=    "</td>";
 		                str1 +="</tr>";		
 					}
@@ -67,16 +67,17 @@ function user_load(user_id, search = false) {
 		                str2 +=    "<td>"+ (obj[i]['authority']==0?'一般使用者':'管理員') +"</td>";
 		                str2 +=    "<td>";
 		                if(obj[i]['authority'] == 0){
-		                	str2 += "<button class='btn btn-success' data-target='#view' onclick='check_authority(1, "+ obj[i]['user_id'] +")'><i class='fa fa-user' aria-hidden='true'></i> &nbsp;設為管理員</button>";
+		                	str2 += "<button class='btn btn-success' data-tooltip='tooltip' title='設為系統管理員' data-target='#view' onclick='check_authority(1, "+ obj[i]['user_id'] +")'><i class='fa fa-user' aria-hidden='true'></i> &nbsp;設為系統管理員</button>";
 		                }
 		                else{
-		                	str2 += "<button class='btn btn-success' data-target='#view' onclick='check_authority(0, "+ obj[i]['user_id'] +")'><i class='fa fa-user' aria-hidden='true'></i> &nbsp;設為一般使用者</button>";
+		                	str2 += "<button class='btn btn-success' data-tooltip='tooltip' title='設為一般使用者' data-target='#view' onclick='check_authority(0, "+ obj[i]['user_id'] +")'><i class='fa fa-user' aria-hidden='true'></i> &nbsp;設為一般使用者</button>";
 		                }        
 		                str2 +=    "</td>";
 		                str2 +="</tr>";
 		            }
 				}
 				$("#table2").html(str2);
+                $('[data-tooltip="tooltip"]').tooltip();
 			}
 		});
 	}
