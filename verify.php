@@ -219,6 +219,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="col-sm-2 control-label" for="journal">期刊名稱：</label>
+                    <div class="col-sm-3" id="model_journal"></div>
+                </div>
+
+                <div class="form-group">
                     <label class="col-sm-2 control-label" for="vol">期刊 Vol：</label>
                     <div class="col-sm-3" id="model_vol"></div>
                     <label class="col-sm-2 control-label" for="no">期刊 No.：</label>

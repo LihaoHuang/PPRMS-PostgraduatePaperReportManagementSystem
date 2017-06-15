@@ -4,6 +4,7 @@ $paper_name=$_POST['paper_name'];
 $source=$_POST['source'];
 $publish=$_POST['publish'];
 $report_time=$_POST['report_time'];
+$journal=$_POST['journal'];
 $vol=$_POST['vol'];
 $no=$_POST['no'];
 $seminar_loc=$_POST['seminar_loc'];
@@ -31,8 +32,8 @@ $dbname = '40343232';
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $dbport) ;//連接資料庫
 mysqli_query($conn,"SET NAMES 'utf8'");//設定語系
 $sql = "INSERT INTO `paper` 
-	(`user_id`, `paper_name`, `source`, `publish`, `report_time`, `vol`, `no`, `seminar_loc`, `seminar_time`, `page`, `filename`, `filename_store`, `keyword1`, `keyword2`, `keyword3`, `keyword4`, `keyword5`, `pass`, `upload_time`, `update_time`, `teacher`) 
-	VALUES ('{$user_id}', '{$paper_name}', '{$source}', '{$publish}', '{$report_time}', '{$vol}', '{$no}', '{$seminar_loc}', '{$seminar_time}', '{$page}', '{$_FILES["file"]["name"]}', '{$target_name}', '{$keyword1}', '{$keyword2}', '{$keyword3}', '{$keyword4}', '{$keyword5}', '0', '{$time}', '{$time}', '{$teacher}')";
+	(`user_id`, `paper_name`, `source`, `publish`, `report_time`, `journal`,`vol`, `no`, `seminar_loc`, `seminar_time`, `page`, `filename`, `filename_store`, `keyword1`, `keyword2`, `keyword3`, `keyword4`, `keyword5`, `pass`, `upload_time`, `update_time`, `teacher`) 
+	VALUES ('{$user_id}', '{$paper_name}', '{$source}', '{$publish}', '{$report_time}', '{$journal}', '{$vol}', '{$no}', '{$seminar_loc}', '{$seminar_time}', '{$page}', '{$_FILES["file"]["name"]}', '{$target_name}', '{$keyword1}', '{$keyword2}', '{$keyword3}', '{$keyword4}', '{$keyword5}', '0', '{$time}', '{$time}', '{$teacher}')";
 
 if($imageFileType != "pdf" && $imageFileType != "doc" && $imageFileType != "docx" && $imageFileType != "txt" ) {
     $_SESSION['message'] = '只能允許pdf, doc, docx, txt等副檔名!';

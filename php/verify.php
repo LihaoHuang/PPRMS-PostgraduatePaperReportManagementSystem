@@ -29,6 +29,7 @@ while($row = mysqli_fetch_array($result)){
     $data[$i]['source']			= $row['source'];
     $data[$i]['publish']		= $row['publish'];
     $data[$i]['report_time']	= $row['report_time'];
+    $data[$i]['journal']		= $row['journal'];
     $data[$i]['vol']			= $row['vol'];
     $data[$i]['no']				= $row['no'];
     $data[$i]['seminar_loc']	= $row['seminar_loc'];

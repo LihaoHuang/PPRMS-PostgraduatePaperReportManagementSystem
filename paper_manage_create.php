@@ -138,7 +138,6 @@
                            <label class="col-sm-2 control-label" for="seminar_loc">研討會地點</label>
                            <div class="col-sm-3"><input type="text" class="form-control" name="seminar_loc" id="seminar_loc" required></div>
                       </div>
-
                       
                       <div class="form-group">
                            <label class="col-sm-2 control-label" for="seminar_time">研討會日期</label>
@@ -146,19 +145,19 @@
                            <label class="col-sm-2 control-label" for="page">起訖頁數</label>
                            <div class="col-sm-3"><input type="number" class="form-control" name="page" id="page" required></div>
                       </div>
-                      
+
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label" for="journal">期刊名稱</label>
+                          <div class="col-sm-3"><input type="text" class="form-control" name="journal" id="journal" required></div>
+                      </div>
+
                       <div class="form-group">
                           <label class="col-sm-2 control-label" for="vol">期刊 Vol</label>
                           <div class="col-sm-3"><input type="number" class="form-control" name="vol" id="vol" required></div>
                           <label class="col-sm-2 control-label" for="no">期刊 No.</label>
                           <div class="col-sm-3"><input type="number" class="form-control" name="no" id="no" required></div>
                       </div>
-                      
-                      <div class="form-group">
-                          <label class="col-sm-2 control-label" for="file">論文原始檔</label>
-                          <div class="col-sm-10"><input type="file" name="file" id="file" required></div>
-                      </div>
-                      
+
                       <div class="form-group">
                           <label class="col-sm-2 control-label" for="keyword1">論文關鍵字1</label>
                           <div class="col-sm-3"><input style="display:inline;" type="text" class="form-control form-control-inline" name="keyword1" id="keyword1"></div>
@@ -184,7 +183,12 @@
                            <label class="col-sm-2 control-label" for="report_time">報告日期</label>
                            <div class="col-sm-3"><input type="date" class="form-control" name="report_time" id="report_time" required></div>
                       </div>
-                      
+
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label" for="file">論文原始檔</label>
+                          <div class="col-sm-10"><input type="file" name="file" id="file" required></div>
+                      </div>
+
                       <div class="form-group">
                           <div class="col-sm-offset-5 col-sm-5">
                             <button type="submit" class="btn btn-primary">送出表單</button>

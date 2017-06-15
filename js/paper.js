@@ -30,7 +30,7 @@ function paper_load(user_id, search = false) {
 	                str +=    "<td>"+ obj[i]['paper_name'] +"</td>";
 	                str +=    "<td>"+ obj[i]['source'] +"</td>";
 	                str +=    "<td>"+ obj[i]['publish'] +"</td>";
-	                str +=    "<td>第"+ obj[i]['vol'] +"捲第"+ obj[i]['no'] +"期</td>";
+	                str +=    "<td>"+ obj[i]['journal'] +"(第"+ obj[i]['vol'] +"捲第"+ obj[i]['no'] +"期)</td>";
 	                str +=    "<td>"+ obj[i]['name'] +"</td>";
 	                str +=    "<td>"+ (obj[i]['pass']==1?'通過':(obj[i]['pass']==2?'不通過':'尚未審核')) +"</td>";
 	                str +=    "<td>";
@@ -78,7 +78,7 @@ function favorite_load(user_id, search = false) {
                     str +=    "<td>"+ obj[i]['paper_name'] +"</td>";
                     str +=    "<td>"+ obj[i]['source'] +"</td>";
                     str +=    "<td>"+ obj[i]['publish'] +"</td>";
-                    str +=    "<td>第"+ obj[i]['vol'] +"捲第"+ obj[i]['no'] +"期</td>";
+                    str +=    "<td>"+ obj[i]['journal'] +"(第"+ obj[i]['vol'] +"捲第"+ obj[i]['no'] +"期)</td>";
                     str +=    "<td>"+ obj[i]['name'] +"</td>";
                     str +=    "<td>"+ (obj[i]['pass']==1?'通過':(obj[i]['pass']==2?'不通過':'尚未審核')) +"</td>";
                     str +=    "<td>";
@@ -182,6 +182,7 @@ function view(paper_id) {
 			$('#model_seminar_loc').html(obj[0]['seminar_loc']);
 			$('#model_seminar_time').html(obj[0]['seminar_time']);
 			$('#model_page').html(obj[0]['page']);
+            $('#model_journal').html(obj[0]['journal']);
 			$('#model_vol').html("第"+obj[0]['vol']+"捲");
 			$('#model_no').html("第"+obj[0]['no']+"期");
 			$('#model_keyword1').html(obj[0]['keyword1']);
@@ -250,6 +251,7 @@ function edit(paper_id) {
 			$('#seminar_loc').html("<input type='text' class='form-control' name='seminar_loc' value='"+obj[0]['seminar_loc']+"' required>");
 			$('#seminar_time').html("<input type='date' class='form-control' name='seminar_time' value='"+obj[0]['seminar_time']+"' required>");
 			$('#page').html("<input type='number' class='form-control' name='page' value='"+obj[0]['page']+"' required>");
+            $('#journal').html("<input type='text' class='form-control' name='journal' value='"+obj[0]['journal']+"' required>");
 			$('#vol').html("<input type='number' class='form-control' name='vol' value='"+obj[0]['vol']+"' required>");
 			$('#no').html("<input type='number' class='form-control' name='no' value='"+obj[0]['no']+"' required>");
 			$('#keyword1').html("<input type='text' class='form-control' name='keyword1' value='"+obj[0]['keyword1']+"'>");

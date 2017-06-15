@@ -122,9 +122,15 @@
                         <h3>論文管理</h3>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-3">
-                        <form style="margin-top:10px;">
-                            <lable for="keyword">關鍵字：</lable>
-                            <input type="text" id="keyword">
+                        <form style="margin-top:10px;" class="form-horizontal" method="post" action="php/xx.php">
+                            <select id="search" style="display: inline;font-size:18px;">
+                                <option value="paper_name">報告者姓名</option>
+                                <option value="keyword">關鍵字</option>
+                                <option value="report_time">報告日期</option>
+                                <option value="journal">期刊名稱</option>
+                                <option value="publish">發表年份</option>
+                            </select>
+                            <input type="text" id="keyword" placeholder="請輸入欲搜尋的關鍵字">
                             <input type="submit" value="搜尋" class="btn btn-default">
                         </form>
                     </div>
@@ -223,7 +229,12 @@
                <label class="col-sm-2 control-label" for="page">起訖頁數：</label>
                <div class="col-sm-3" id="model_page"></div>
           </div>
-          
+
+          <div class="form-group">
+              <label class="col-sm-2 control-label" for="journal">期刊名稱：</label>
+              <div class="col-sm-3" id="model_journal"></div>
+          </div>
+
           <div class="form-group">
               <label class="col-sm-2 control-label" for="vol">期刊 Vol：</label>
               <div class="col-sm-3" id="model_vol"></div>
@@ -299,7 +310,12 @@
                <label class="col-sm-2 control-label" for="page">起訖頁數：</label>
                <div class="col-sm-3" id="page"></div>
           </div>
-          
+
+          <div class="form-group">
+              <label class="col-sm-2 control-label" for="journal">期刊名稱：</label>
+              <div class="col-sm-3" id="journal"></div>
+          </div>
+
           <div class="form-group">
               <label class="col-sm-2 control-label" for="vol">期刊 Vol：</label>
               <div class="col-sm-3" id="vol"></div>
