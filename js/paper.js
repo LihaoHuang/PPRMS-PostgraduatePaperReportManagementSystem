@@ -7,9 +7,56 @@
 
 'use strict';
 $('[data-tooltip="tooltip"]').tooltip();
-function paper_load(user_id, search = false) {
-	if (search) {
+var search = getCookie("search");
 
+function paper_load(user_id) {
+	if (search == "searching") {
+        setCookie("search", "", 365);
+        let data = {
+            "user_id": user_id,
+            "category": getCookie("category"),
+            "keyword" : DecodeCookie(getCookie("keyword"))
+        };
+
+        $.post("php/paper_search.php", data, function(msg){
+            var obj = JSON.parse(msg);
+            if (obj == "" || obj == null) {
+                console.log("查無資料!!");
+                let str = "";
+                str += "<tr>";
+                str +=    "<td colspan='7' align='center'><h2>無資料</h2></td>";
+                str +="</tr>";
+                $("tbody").html(str);
+            } else {
+                let str = "";
+                for (var i = 0; i < obj.length; i++) {
+                    str += "<tr>";
+                    str +=    "<td>"+ obj[i]['paper_name'] +"</td>";
+                    str +=    "<td>"+ obj[i]['source'] +"</td>";
+                    str +=    "<td>"+ obj[i]['publish'] +"</td>";
+                    str +=    "<td>"+ obj[i]['journal'] +"(第"+ obj[i]['vol'] +"捲第"+ obj[i]['no'] +"期)</td>";
+                    str +=    "<td>"+ obj[i]['name'] +"</td>";
+                    str +=    "<td>"+ (obj[i]['pass']==1?'通過':(obj[i]['pass']==2?'不通過':'尚未審核')) +"</td>";
+                    str +=    "<td>";
+                    str +=        "<button class='btn btn-success' data-tooltip='tooltip' title='查看' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='編輯' data-toggle='modal' data-target='#edit' onclick='edit("+ obj[i]['paper_id'] +")'><i class='fa fa-pencil' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='論文上傳' data-toggle='modal' data-target='#fileupload' onclick='fileupload("+ obj[i]['paper_id'] +")'><i class='fa fa-file' aria-hidden='true'></i></button>";
+                    str +=        "<a type='button' class='btn btn-info' data-tooltip='tooltip' title='論文資訊下載(IEEE格式)' href='php/ieee_download.php?paper_id=" + obj[i]['paper_id'] +"'><i class='fa fa-download' aria-hidden='true'></i></a>";
+                    str +=        "<button class='btn btn-danger' data-tooltip='tooltip' title='刪除' onclick='check_delete("+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i> </button>";
+                    if (obj[i]['SESSION_auth'] == 1){
+                        if (obj[i]['favorite'] == 1){
+                            str +=        "<button class='btn btn-warning' data-tooltip='tooltip' title='加到我的最愛' onclick='check_favorite(1,"+ obj[i]['paper_id'] +")'><i class='fa fa-star' aria-hidden='true'></i></button>";
+                        }else{
+                            str +=        "<button class='btn btn-warning' data-tooltip='tooltip' title='加到我的最愛' onclick='check_favorite(0,"+ obj[i]['paper_id'] +")'><i class='fa fa-star-o' aria-hidden='true'></i></button>";
+                        }
+                    }
+                    str +=    "</td>";
+                    str +="</tr>";
+                }
+                $("tbody").html(str);
+                $('[data-tooltip="tooltip"]').tooltip();
+            }
+        });
 	} else {
 		let data = {
             "user_id": user_id
@@ -56,9 +103,47 @@ function paper_load(user_id, search = false) {
 	}
 }
 
-function favorite_load(user_id, search = false) {
-    if (search) {
-
+function favorite_load(user_id) {
+    if (search == "searching") {
+        setCookie("search", "", 365);
+        let data = {
+            "user_id": user_id,
+            "category": getCookie("category"),
+            "keyword" : DecodeCookie(getCookie("keyword"))
+        };
+        $.post("php/favorite_search.php", data, function(msg){
+            var obj = JSON.parse(msg);
+            if (obj == "" || obj == null) {
+                console.log("查無資料!!");
+                let str = "";
+                str += "<tr>";
+                str +=    "<td colspan='7' align='center'><h2>無資料</h2></td>";
+                str +="</tr>";
+                $("tbody").html(str);
+            } else {
+                let str = "";
+                for (var i = 0; i < obj.length; i++) {
+                    str += "<tr>";
+                    str +=    "<td>"+ obj[i]['paper_name'] +"</td>";
+                    str +=    "<td>"+ obj[i]['source'] +"</td>";
+                    str +=    "<td>"+ obj[i]['publish'] +"</td>";
+                    str +=    "<td>"+ obj[i]['journal'] +"(第"+ obj[i]['vol'] +"捲第"+ obj[i]['no'] +"期)</td>";
+                    str +=    "<td>"+ obj[i]['name'] +"</td>";
+                    str +=    "<td>"+ (obj[i]['pass']==1?'通過':(obj[i]['pass']==2?'不通過':'尚未審核')) +"</td>";
+                    str +=    "<td>";
+                    str +=        "<button class='btn btn-success' data-tooltip='tooltip' title='查看' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='編輯' data-toggle='modal' data-target='#edit' onclick='edit("+ obj[i]['paper_id'] +")'><i class='fa fa-pencil' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='論文上傳' data-toggle='modal' data-target='#fileupload' onclick='fileupload("+ obj[i]['paper_id'] +")'><i class='fa fa-file' aria-hidden='true'></i></button>";
+                    str +=        "<a type='button' class='btn btn-info' data-tooltip='tooltip' title='論文資訊下載(IEEE格式)' href='php/ieee_download.php?paper_id=" + obj[i]['paper_id'] +"'><i class='fa fa-download' aria-hidden='true'></i></a>";
+                    str +=        "<button class='btn btn-danger' data-tooltip='tooltip' title='刪除' onclick='check_delete("+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-warning' data-tooltip='tooltip' title='取消我的最愛' onclick='check_nonfavorite("+ obj[i]['paper_id'] +")'><i class='fa fa-star' aria-hidden='true'></i></button>";
+                    str +=    "</td>";
+                    str +="</tr>";
+                }
+                $("tbody").html(str);
+                $('[data-tooltip="tooltip"]').tooltip();
+            }
+        });
     } else {
         let data = {
             "user_id": user_id
@@ -88,7 +173,7 @@ function favorite_load(user_id, search = false) {
                     str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='論文上傳' data-toggle='modal' data-target='#fileupload' onclick='fileupload("+ obj[i]['paper_id'] +")'><i class='fa fa-file' aria-hidden='true'></i></button>";
                     str +=        "<a type='button' class='btn btn-info' data-tooltip='tooltip' title='論文資訊下載(IEEE格式)' href='php/ieee_download.php?paper_id=" + obj[i]['paper_id'] +"'><i class='fa fa-download' aria-hidden='true'></i></a>";
                     str +=        "<button class='btn btn-danger' data-tooltip='tooltip' title='刪除' onclick='check_delete("+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i></button>";
-					str +=        "<button class='btn btn-warning' data-tooltip='tooltip' title='取消我的最愛' onclick='check_nonfavorite("+ obj[i]['paper_id'] +")'><i class='fa fa-star' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-warning' data-tooltip='tooltip' title='取消我的最愛' onclick='check_nonfavorite("+ obj[i]['paper_id'] +")'><i class='fa fa-star' aria-hidden='true'></i></button>";
                     str +=    "</td>";
                     str +="</tr>";
                 }
@@ -99,9 +184,41 @@ function favorite_load(user_id, search = false) {
     }
 }
 
-function verify_load(user_id, search = false) {
-    if (search) {
-
+function verify_load(user_id) {
+    if (search == "searching") {
+        setCookie("search", "", 365);
+        let data = {
+            "user_id": user_id,
+            "category": getCookie("category"),
+            "keyword" : DecodeCookie(getCookie("keyword"))
+        };
+        $.post("php/verify_search.php", data, function(msg){
+            var obj = JSON.parse(msg);
+            if (obj == "" || obj == null) {
+                console.log("查無資料!!");
+                let str = "";
+                str += "<tr>";
+                str +=    "<td colspan='7' align='center'><h2>無資料</h2></td>";
+                str +="</tr>";
+                $("tbody").html(str);
+            } else {
+                let str = "";
+                for (var i = 0; i < obj.length; i++) {
+                    str += "<tr>";
+                    str +=    "<td>"+ obj[i]['paper_name'] +"</td>";
+                    str +=    "<td>"+ obj[i]['name'] +"</td>";
+                    str +=    "<td>"+ (obj[i]['pass']==1?'通過':(obj[i]['pass']==2?'不通過':'尚未審核')) +"</td>";
+                    str +=    "<td>";
+                    str +=        "<button class='btn btn-success' data-tooltip='tooltip' title='查看' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-warning' data-tooltip='tooltip' title='通過' onclick='check_verify(1, "+ obj[i]['paper_id'] +")'><i class='fa fa-check' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-danger' data-tooltip='tooltip' title='不通過' onclick='check_verify(2, "+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i></button>";
+                    str +=    "</td>";
+                    str +="</tr>";
+                }
+                $("tbody").html(str);
+                $('[data-tooltip="tooltip"]').tooltip();
+            }
+        });
     } else {
         let data = {
             "user_id": user_id
@@ -282,4 +399,74 @@ function fileupload(paper_id) {
             $('#FileUpload_paper_id').val(obj[0]['paper_id']);
         }
     });
+}
+
+function category() {
+    let val = $('#search option:selected').val();
+    let text = $('#search option:selected').text();
+    if (val == "report_time"){
+        $('#keyword').attr("type","date");
+    }else if(val == "publish"){
+        $('#keyword').attr("type","number");
+    }else{
+        $('#keyword').attr("type","text");
+    }
+}
+
+function keyword_search() {
+    let val = $('#search').val();
+    let text = $('#keyword').val();
+
+    setCookie("search", "searching", 365);
+    setCookie("category", val, 365);
+    setCookie("keyword", CodeCookie(text), 365);
+
+    window.location.reload();
+}
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+//編碼程序：
+function CodeCookie(str) {
+    var strRtn="";
+
+    for (var i=str.length-1;i>=0;i--)
+    {
+        strRtn+=str.charCodeAt(i);
+        if (i) strRtn+="a"; //用a作分隔符
+    }
+    return strRtn;
+}
+
+//解碼程序：
+function DecodeCookie(str) {
+    var strArr;
+    var strRtn="";
+
+    strArr=str.split("a");
+
+    for (var i=strArr.length-1;i>=0;i--)
+        strRtn+=String.fromCharCode(eval(strArr[i]));
+
+    return strRtn;
 }

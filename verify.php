@@ -122,11 +122,15 @@
                               <h3>論文審核<sub></sub></h3>
                           </div>
                           <div class="col-md-3 col-sm-3 col-xs-3">
-                              <form style="margin-top:10px;">
-                                  <lable for="keyword">關鍵字：</lable>
-                                  <input type="text" id="keyword">
-                                  <input type="submit" value="搜尋" class="btn btn-default">
-                              </form>
+                              <select id="search" style="display: inline;font-size:15px;" onchange="category()">
+                                  <option value="name">報告者姓名</option>
+                                  <option value="keyword">關鍵字</option>
+                                  <option value="report_time">報告日期</option>
+                                  <option value="journal">期刊名稱</option>
+                                  <option value="publish">發表年份</option>
+                              </select>
+                              <input type="text" id="keyword" placeholder="請輸入欲搜尋的關鍵字">
+                              <input type="button" value="搜尋" onclick="keyword_search()" class="btn btn-default">
                           </div>
                       </div>
                       <div class="col-md-12 col-sm-12 col-xs-12">
