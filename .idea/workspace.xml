@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4428fa3a-af31-49ac-8be5-be1ba6747854" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/paper_manage.php" afterPath="$PROJECT_DIR$/paper_manage.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/favorite.php" afterPath="$PROJECT_DIR$/php/favorite.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/paper.php" afterPath="$PROJECT_DIR$/php/paper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/user.php" afterPath="$PROJECT_DIR$/php/user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/verify.php" afterPath="$PROJECT_DIR$/php/verify.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,7 +17,20 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="user.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/user.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+              <folding>
+                <marker date="1497606403793" expanded="true" signature="416:468" ph="SELECT * FRO... user" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -63,8 +73,8 @@
         <option value="$PROJECT_DIR$/paper_manage.php" />
         <option value="$PROJECT_DIR$/php/paper.php" />
         <option value="$PROJECT_DIR$/php/verify.php" />
-        <option value="$PROJECT_DIR$/php/user.php" />
         <option value="$PROJECT_DIR$/php/favorite.php" />
+        <option value="$PROJECT_DIR$/php/user.php" />
       </list>
     </option>
   </component>
@@ -222,18 +232,18 @@
       <workItem from="1497525403580" duration="11156000" />
       <workItem from="1497537030423" duration="136000" />
       <workItem from="1497537234144" duration="83000" />
-      <workItem from="1497598905656" duration="5645000" />
+      <workItem from="1497598905656" duration="5979000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27551000" />
+    <option name="totallyTimeSpent" value="27885000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="24" y="79" width="1768" height="928" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20547946" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20547946" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -701,17 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="87" lean-forward="false" selection-start-line="17" selection-start-column="87" selection-end-line="17" selection-end-column="87" />
-          <folding>
-            <marker date="1497605983895" expanded="true" signature="416:468" ph="SELECT * FRO... user" />
-            <marker date="1497605983895" expanded="true" signature="416:491" ph="SELECT * FRO... user" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/ieee_download.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
@@ -759,6 +758,16 @@
             <element signature="n#!!block;n#verify#0" expanded="false" />
             <element signature="n#!!block;n#view#0" expanded="false" />
             <element signature="n#!!block;n#fileupload#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+          <folding>
+            <marker date="1497606403793" expanded="true" signature="416:468" ph="SELECT * FRO... user" />
           </folding>
         </state>
       </provider>
