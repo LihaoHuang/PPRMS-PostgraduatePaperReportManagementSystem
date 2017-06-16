@@ -36,7 +36,8 @@ function paper_load(user_id, search = false) {
 	                str +=    "<td>";
 	                str +=        "<button class='btn btn-success' data-tooltip='tooltip' title='查看' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i></button>";
 	                str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='編輯' data-toggle='modal' data-target='#edit' onclick='edit("+ obj[i]['paper_id'] +")'><i class='fa fa-pencil' aria-hidden='true'></i></button>";
-                    str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='檔案上傳' data-toggle='modal' data-target='#fileupload' onclick='fileupload("+ obj[i]['paper_id'] +")'><i class='fa fa-file' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='論文上傳' data-toggle='modal' data-target='#fileupload' onclick='fileupload("+ obj[i]['paper_id'] +")'><i class='fa fa-file' aria-hidden='true'></i></button>";
+                    str +=        "<a type='button' class='btn btn-info' data-tooltip='tooltip' title='論文資訊下載(IEEE格式)' href='php/ieee_download.php?paper_id=" + obj[i]['paper_id'] +"'><i class='fa fa-download' aria-hidden='true'></i></a>";
 					str +=        "<button class='btn btn-danger' data-tooltip='tooltip' title='刪除' onclick='check_delete("+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i> </button>";
 					if (obj[i]['SESSION_auth'] == 1){
                         if (obj[i]['favorite'] == 1){
@@ -84,6 +85,8 @@ function favorite_load(user_id, search = false) {
                     str +=    "<td>";
                     str +=        "<button class='btn btn-success' data-tooltip='tooltip' title='查看' data-toggle='modal' data-target='#view' onclick='view("+ obj[i]['paper_id'] +")'><i class='fa fa-eye' aria-hidden='true'></i></button>";
                     str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='編輯' data-toggle='modal' data-target='#edit' onclick='edit("+ obj[i]['paper_id'] +")'><i class='fa fa-pencil' aria-hidden='true'></i></button>";
+                    str +=        "<button class='btn btn-primary' data-tooltip='tooltip' title='論文上傳' data-toggle='modal' data-target='#fileupload' onclick='fileupload("+ obj[i]['paper_id'] +")'><i class='fa fa-file' aria-hidden='true'></i></button>";
+                    str +=        "<a type='button' class='btn btn-info' data-tooltip='tooltip' title='論文資訊下載(IEEE格式)' href='php/ieee_download.php?paper_id=" + obj[i]['paper_id'] +"'><i class='fa fa-download' aria-hidden='true'></i></a>";
                     str +=        "<button class='btn btn-danger' data-tooltip='tooltip' title='刪除' onclick='check_delete("+ obj[i]['paper_id'] +")'><i class='fa fa-close' aria-hidden='true'></i></button>";
 					str +=        "<button class='btn btn-warning' data-tooltip='tooltip' title='取消我的最愛' onclick='check_nonfavorite("+ obj[i]['paper_id'] +")'><i class='fa fa-star' aria-hidden='true'></i></button>";
                     str +=    "</td>";
@@ -190,7 +193,7 @@ function view(paper_id) {
 			$('#model_keyword3').html(obj[0]['keyword3']);
 			$('#model_keyword4').html(obj[0]['keyword4']);
 			$('#model_keyword5').html(obj[0]['keyword5']);
-			$('#model_filename').html("<a type='button' class='btn btn-info' href='php/filedownload.php?paper_id="+obj[0]['paper_id']+"'>檔案下載</a>");
+			$('#model_filename').html("<a type='button' class='btn btn-info' href='php/filedownload.php?paper_id="+obj[0]['paper_id']+"'>論文下載</a>");
 			$('#model_teacher').html(obj[0]['teacher']);
 			$('#model_report_time').html(obj[0]['report_time']);
 		}

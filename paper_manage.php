@@ -123,7 +123,7 @@
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-3">
                         <form style="margin-top:10px;" class="form-horizontal" method="post" action="php/xx.php">
-                            <select id="search" style="display: inline;font-size:18px;">
+                            <select id="search" style="display: inline;font-size:15px;">
                                 <option value="paper_name">報告者姓名</option>
                                 <option value="keyword">關鍵字</option>
                                 <option value="report_time">報告日期</option>
@@ -195,6 +195,7 @@
     <script src="js/paper.js"></script>
     <!-- Datatables Scripts -->
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
   </body>
 </html>
 
