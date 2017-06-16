@@ -15,7 +15,7 @@ mysqli_query($conn,"SET NAMES 'utf8'");//設定語系
 session_start();
 
 if ($_SESSION["authority"] == 1){
-    $sql = "SELECT * FROM `user` where `user_id` != '{$user_id}' ";
+    $sql = "SELECT * FROM `user` where `user_id` != '{$user_id}' ORDER BY paper_id DESC";
 }else{
     $sql = "";
 }

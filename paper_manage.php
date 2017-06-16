@@ -26,11 +26,6 @@
         print '<script>window.location.replace("login.php");</script>';
       }
 
-      if ($_SESSION['authority'] != 1) {
-          print '<script>javascript:history.back();</script>';
-          $_SESSION['message'] = "你沒有權限訪問該頁面!";
-      }
-
       if (isset($_SESSION['message'])) {
         echo '<script>alert(\''.$_SESSION['message'].'\');</script>';
         unset($_SESSION['message']);

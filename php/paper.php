@@ -13,9 +13,9 @@ $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $dbport) ;//連接資
 mysqli_query($conn,"SET NAMES 'utf8'");//設定語系
 session_start();
 if ($_SESSION["authority"] == 1){
-    $sql = "SELECT * FROM `paper` INNER JOIN `user` on `paper`.`user_id` = `user`.`user_id`";
+    $sql = "SELECT * FROM `paper` INNER JOIN `user` on `paper`.`user_id` = `user`.`user_id` ORDER BY paper_id DESC";
 }else{
-    $sql = "SELECT * FROM `paper` INNER JOIN `user` on `paper`.`user_id` = `user`.`user_id` WHERE `user`.`user_id` = '{$user_id}'";
+    $sql = "SELECT * FROM `paper` INNER JOIN `user` on `paper`.`user_id` = `user`.`user_id` WHERE `user`.`user_id` = '{$user_id}' ORDER BY paper_id DESC";
 }
 $result = mysqli_query($conn,$sql);
 
