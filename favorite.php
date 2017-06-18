@@ -194,7 +194,7 @@
 </html>
 
 <!-- View Modal -->
-<div class="modal fade bs-example-modal-lg"" id="view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade bs-example-modal-lg" id="view" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <div class="modal-dialog modal-lg" role="document">
     <div align="center" class="modal-content">
         <div class="modal-header">
@@ -274,7 +274,7 @@
 </div>
 
 <!-- Edit Modal -->
-<div class="modal fade bs-example-modal-lg"" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade bs-example-modal-lg" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <div class="modal-dialog modal-lg" role="document">
     <div align="center" class="modal-content">
         <div class="modal-header">
@@ -351,4 +351,29 @@
         </form>
     </div>
 </div>
+</div>
+
+<!-- FileUpload Modal -->
+<div class="modal fade bs-example-modal" id="fileupload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-xm" role="document">
+        <div align="center" class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">檔案上傳</h4>
+            </div>
+            <form class="form-horizontal" method="post" action="php/paper_fileupload.php" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="hidden" name="FileUpload_paper_id" id="FileUpload_paper_id">
+                        <label class="col-sm-2 control-label" for="file">論文原始檔</label>
+                        <div class="col-sm-10"><input type="file" name="file" id="file" required></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">送出表單</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

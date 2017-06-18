@@ -353,8 +353,8 @@
 </div>
 
 <!-- FileUpload Modal -->
-<div class="modal fade bs-example-modal-lg" id="fileupload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade bs-example-modal" id="fileupload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sx" role="document">
         <div align="center" class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

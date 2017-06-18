@@ -36,6 +36,9 @@
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
 
+      <div align="center" style="margin-top: 100px;">
+          <h1><i class="fa fa-paw"></i> 研究生論文管理系統</h1>
+      </div>
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
